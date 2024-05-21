@@ -29,4 +29,9 @@ public class ShortTerm implements Contract {
         System.out.println("Short-term contract signed.");
         return this;
     }
+
+    @Override
+    public String getContractID() {
+        return this.contractID;
+    }
 }

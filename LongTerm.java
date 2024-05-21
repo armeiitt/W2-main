@@ -29,4 +29,9 @@ public class LongTerm implements Contract {
         System.out.println("Long-term contract signed.");
         return this;
     }
+
+    @Override
+    public String getContractID() {
+        return this.contractID;
+    }
 }

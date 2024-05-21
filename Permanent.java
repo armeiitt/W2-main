@@ -29,5 +29,9 @@ public class Permanent implements Contract {
         System.out.println("Permanent contract signed.");
         return this;
     }
+
+    @Override
+    public String getContractID() {
+        return this.contractID;
+    }
 }
-F

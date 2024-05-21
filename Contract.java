@@ -8,4 +8,6 @@ public interface Contract {
     void buildRentAmount(double rentAmount);
 
     Contract signContract();
+
+    String getContractID();
 }
