@@ -1,8 +1,4 @@
-
-package cse305;
-
 import java.util.Date;
-
 
 public class RentalContract {
     private int contractID;
@@ -12,28 +8,40 @@ public class RentalContract {
     private Date endDate;
     private float rentAmount;
 
-
-
-    public RentalContract(RentalContractBuilder builder) {
-        this.contractID = builder.getContractID();
-        this.propertyID = builder.getPropertyID();
-        this.tenantID = builder.getTenantID();
-        this.startDate = builder.getStartDate();
-        this.endDate = builder.getEndDate();
-        this.rentAmount = builder.getRent();
+    public RentalContract(int contractID, int propertyID, int tenantID, Date startDate, float rentAmount) {
+        this.contractID = contractID;
+        this.propertyID = propertyID;
+        this.tenantID = tenantID;
+        this.startDate = startDate;
+        this.rentAmount = rentAmount;
     }
-    
-    
 
     public void terminateContract() {
-      this.endDate = new Date(); // Set the end date to the current date
-
+        this.endDate = new Date(); 
         System.out.println("Rental contract terminated successfully.");
     }
-     private Date calculateEndDate(Date startDate, int durationMonths) {
-        // Implement your logic to calculate the end date based on the start date and duration
-        // (This is a placeholder, you may want to use a more sophisticated approach)
-        // For simplicity, this example adds the duration directly to the start date
-        return new Date(startDate.getTime() + durationMonths * 30 * 24 * 60 * 60 * 1000L);
+
+    public int getContractID() {
+        return contractID;
+    }
+
+    public int getPropertyID() {
+        return propertyID;
+    }
+
+    public int getTenantID() {
+        return tenantID;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public float getRentAmount() {
+        return rentAmount;
     }
 }

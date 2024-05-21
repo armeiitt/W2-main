@@ -1,13 +1,13 @@
-import java.util.*;
+import java.util.Scanner;
 
-public class user {
+public class User {
     private int id;
     private String name;
     private String email;
     private String phoneNumber;
     private String password;
 
-    public user(int id, String name, String email, String phoneNumber, String password) {
+    public User(int id, String name, String email, String phoneNumber, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -15,73 +15,39 @@ public class user {
         this.password = password;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void Login() {
+    public void login() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your user ID: ");
-        String enterID = sc.nextLine();
-        System.out.println("Enter your password: ");
-        String enterPassword = sc.nextLine();
-        if (enterID.equals(this.id) && enterPassword.equals(this.password)) {
-            System.out.println("Login Successfully");
-        } else {
-            System.out.println("Wrong ID or password, please enter again");
+        String enterID;
+        String enterPassword;
+        while (true) {
             System.out.println("Enter your user ID: ");
             enterID = sc.nextLine();
             System.out.println("Enter your password: ");
             enterPassword = sc.nextLine();
+            if (enterID.equals(String.valueOf(this.id)) && enterPassword.equals(this.password)) {
+                System.out.println("Login Successfully");
+                break;
+            } else {
+                System.out.println("Wrong ID or password, please enter again");
+            }
         }
     }
 
-    public void ResetPassword() {
+    public void resetPassword() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter current password: ");
-        String enterPassword = sc.nextLine();
-        if (enterPassword.equals(this.password)) {
-            this.password = enterPassword;
-            System.out.println("You have changed password successfully");
-        } else {
-            System.err.println("Wrong password, please re-enter again!");
+        String enterPassword;
+        while (true) {
+            System.out.println("Enter current password: ");
             enterPassword = sc.nextLine();
+            if (enterPassword.equals(this.password)) {
+                System.out.println("Enter new password: ");
+                String newPassword = sc.nextLine();
+                this.password = newPassword;
+                System.out.println("You have changed password successfully");
+                break;
+            } else {
+                System.err.println("Wrong password, please re-enter again!");
+            }
         }
     }
 }

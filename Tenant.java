@@ -1,52 +1,26 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tenant extends User {
+public class Tenant {
+    private User user;
+    private List<RentalContract> listOfContracts;
 
-    private ArrayList<RentalContract> rentedProperties;
-    private String TenantID;
-
-    public Tenant(TenantBuilder tent) {
-        super(tent);
-        this.rentedProperties = tent.getList();
-        this.TenantID = tent.getTenantID();
+    public Tenant(User user) {
+        this.user = user;
+        this.listOfContracts = new ArrayList<>();
     }
 
-    // public Tenant(UserBuilder builder) {
-    // super(builder);
-    // }
-    public void setRentedProperties(ArrayList<RentalContract> rentedProperties) {
-        this.rentedProperties = rentedProperties;
-    }
+    public void requestCreateRentalContract(RentalContract contract) {
 
-    public static TenantBuilder tbuilder() {
-        return new TenantBuilderImp();
+        this.listOfContracts.add(contract);
+        System.out.println("Rental contract requested successfully.");
     }
-
-    public List<RentalContract> getRentedProperties() {
-        return new ArrayList<>(rentedProperties); // Return a copy to prevent external modification
-    }
-
-    public Tenant getTenant() {
-        return this;
-    }
-
-    // public void createRentalContract(Property property, int durationMonths) {
-    //
-    // RentalContract newContract = new RentalContract(property, durationMonths);
-    // rentedProperties.add(newContract);
-    //
-    // System.out.println("Rental contract created successfully.");
-    // }
-    public void terminateRentalContract(RentalContract contract) {
-        if (rentedProperties.contains(contract)) {
-            contract.terminateContract();
-            rentedProperties.remove(contract);
+    public void requestTerminateRentalContract(RentalContract contract) {
+        if (listOfContracts.contains(contract)) {
+            listOfContracts.remove(contract);
             System.out.println("Rental contract terminated successfully.");
         } else {
             System.out.println("Invalid rental contract. Unable to terminate.");
         }
     }
-
 }
